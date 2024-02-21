@@ -4,12 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/E:/Users/pubup/One%20Drive/OneDrive/Documents/NetBeansProjects/CarParkManagementSystem/src/carparkmanagementsystem/ReleaseSlotUI.java</file>
-            <file>file:/E:/Users/pubup/One%20Drive/OneDrive/Documents/NetBeansProjects/CarParkManagementSystem/src/carparkmanagementsystem/dataStructures/DoublyLinkedList.java</file>
             <file>file:/E:/Users/pubup/One%20Drive/OneDrive/Documents/NetBeansProjects/CarParkManagementSystem/src/carparkmanagementsystem/HomeUI.java</file>
             <file>file:/E:/Users/pubup/One%20Drive/OneDrive/Documents/NetBeansProjects/CarParkManagementSystem/src/carparkmanagementsystem/IncomeStatusUI.java</file>
             <file>file:/E:/Users/pubup/One%20Drive/OneDrive/Documents/NetBeansProjects/CarParkManagementSystem/src/carparkmanagementsystem/ReserveSlotUI.java</file>
-            <file>file:/E:/Users/pubup/One%20Drive/OneDrive/Documents/NetBeansProjects/CarParkManagementSystem/src/carparkmanagementsystem/CarPark.java</file>
             <file>file:/E:/Users/pubup/One%20Drive/OneDrive/Documents/NetBeansProjects/CarParkManagementSystem/src/carparkmanagementsystem/dataStructures/AVLTree.java</file>
+            <file>file:/E:/Users/pubup/One%20Drive/OneDrive/Documents/NetBeansProjects/CarParkManagementSystem/src/carparkmanagementsystem/dataStructures/AVLTreeNode.java</file>
         </group>
     </open-files>
 </project-private>

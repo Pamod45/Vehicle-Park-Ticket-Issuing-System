@@ -3,12 +3,12 @@ import java.util.Date;
 
 public class DailyCustomerList 
 {
-    Node head;
-    Node tail;
-    String date;
-    double dailyTotal;
-    DailyCustomerList next;
-    DailyCustomerList previous;
+    public Node head;
+    public Node tail;
+    public String date;
+    public double dailyTotal;
+    public DailyCustomerList next;
+    public DailyCustomerList previous;
     
     public DailyCustomerList(){
         

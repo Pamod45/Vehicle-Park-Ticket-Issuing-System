@@ -3,8 +3,8 @@ import java.util.Date;
 
 public class DayList 
 {
-    DailyCustomerList head;
-    DailyCustomerList tail;
+    public DailyCustomerList head;
+    public DailyCustomerList tail;
 
 
     public DailyCustomerList addDay(String date) {
