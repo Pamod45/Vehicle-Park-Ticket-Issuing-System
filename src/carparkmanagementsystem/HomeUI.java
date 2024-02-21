@@ -8,8 +8,11 @@ import carparkmanagementsystem.dataStructures.AVLTree;
 import carparkmanagementsystem.dataStructures.DailyCustomerList;
 import carparkmanagementsystem.dataStructures.DayList;
 import carparkmanagementsystem.dataStructures.Heap;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
 
 public class HomeUI extends javax.swing.JFrame {
     Heap slotminheap;
@@ -173,7 +176,8 @@ public class HomeUI extends javax.swing.JFrame {
         
     }
     public static void main(String args[]) {       
-        
+        FlatMacLightLaf.setup();
+        UIDefaults defaults = UIManager.getLookAndFeelDefaults();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new HomeUI().setVisible(true);

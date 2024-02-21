@@ -2,14 +2,31 @@
 package carparkmanagementsystem;
 
 import carparkmanagementsystem.dataStructures.DailyCustomerList;
+import carparkmanagementsystem.dataStructures.DayList;
+import java.awt.Color;
+import java.awt.Component;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 public class IncomeStatusUI extends javax.swing.JFrame {
     HomeUI home;
+    DayList sortedList;
     public IncomeStatusUI(HomeUI home) {
         this.home = home;
         initComponents();
         fillTable();
+        sortedList = cloneOrgList(home.daylist);
+        sortedList.head = mergeSort(sortedList.head);
+        DailyCustomerList c = sortedList.head;
+        if(c!=null){
+            while(c.next!=null){
+                c = c.next;
+            }
+            sortedList.tail = c ;
+            sortedList.head.previous = null ;
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -124,7 +141,7 @@ public class IncomeStatusUI extends javax.swing.JFrame {
 
         sortDateCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ascending", "Descending" }));
 
-        sortPriceCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Min", "Max", " " }));
+        sortPriceCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Min", "Max" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,11 +195,51 @@ public class IncomeStatusUI extends javax.swing.JFrame {
             current = current.next;
         }       
         dailyIncomeTable.setModel(model);
+        dailyIncomeTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+                @Override
+                public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                    // Get the default renderer component
+                    Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+                    // Change row color based on row index
+                    if (row % 2 == 0) {
+                        component.setBackground(Color.pink);
+                    } else {
+                        component.setBackground(table.getBackground());
+                    }
+
+                    return component;
+                }
+            });
     }
     public void fillTableDescending(){
         String[] columnNames = {"Date", "Price"};
         DefaultTableModel model = new DefaultTableModel(columnNames,0);
         DailyCustomerList current = home.daylist.tail;
+        while(current!=null){
+            Object[] row = {current.date,current.dailyTotal};
+            model.addRow(row);
+            current = current.previous;
+        }       
+        dailyIncomeTable.setModel(model);
+    }
+    public void fillTableByMinPrice(){
+        //sortList();      
+        String[] columnNames = {"Date", "Price"};
+        DefaultTableModel model = new DefaultTableModel(columnNames,0);
+        DailyCustomerList current = sortedList.head;
+        while(current!=null){
+            Object[] row = {current.date,current.dailyTotal};
+            model.addRow(row);
+            current = current.next;
+        }   
+        dailyIncomeTable.setModel(model);        
+    }
+    public void fillTableByMaxPrice(){    
+       // sortList();
+        String[] columnNames = {"Date", "Price"};
+        DefaultTableModel model = new DefaultTableModel(columnNames,0);
+        DailyCustomerList current = sortedList.tail;
         while(current!=null){
             Object[] row = {current.date,current.dailyTotal};
             model.addRow(row);
@@ -206,10 +263,132 @@ public class IncomeStatusUI extends javax.swing.JFrame {
             }
         }
         else if(sortByPriceRadio.isSelected()){
-            
+            String selected = sortPriceCombo.getSelectedItem().toString();
+            if(selected=="Min"){
+                fillTableByMinPrice();
+            }
+            else if(selected=="Max"){
+                fillTableByMaxPrice();
+            }        
         }
     }//GEN-LAST:event_sortButtonActionPerformed
+    DailyCustomerList sortedMerge(DailyCustomerList left, DailyCustomerList right)
+    {
+        DailyCustomerList result = null;
+        if (left == null)
+            return right;
+        if (right == null)
+            return left;
+        
+        if (left.dailyTotal <= right.dailyTotal) {
+            result = left;
+            result.next = sortedMerge(left.next, right);
+        }
+        else {
+            result = right;
+            result.next = sortedMerge(left, right.next);
+        }
+        if(result.next!=null){
+            result.next.previous = result;
+        }
+        return result;
+    }
+ 
+    DailyCustomerList mergeSort(DailyCustomerList h)
+    {
+        if (h == null || h.next == null) {
+            return h;
+        }
+ 
+        DailyCustomerList middle = getMiddle(h);
+        DailyCustomerList nextofmiddle = middle.next;
+ 
+        middle.next = null;
+ 
+        DailyCustomerList left = mergeSort(h);
+        DailyCustomerList right = mergeSort(nextofmiddle);
+        
+        DailyCustomerList sortedlist = sortedMerge(left, right);
+        return sortedlist;
+    }
+    
+    public DailyCustomerList getMiddle(DailyCustomerList head)
+    {
+        if (head == null)
+            return head;
+ 
+        DailyCustomerList slow = head, fast = head;
+ 
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+    
+    public static DayList cloneOrgList(DayList orig) {
+	    DailyCustomerList origCurr = orig.head; 
+	    DayList copy = new DayList(); 
+	    DailyCustomerList prevCopyNode = null;
+	    
+	    while (origCurr != null) {
+	        DailyCustomerList newCopyNode = new DailyCustomerList(); 
+                                newCopyNode.dailyTotal = origCurr.dailyTotal;
+                                newCopyNode.date = origCurr.date;
+                                newCopyNode.head = origCurr.head;
+	        if (prevCopyNode != null) {
+	            prevCopyNode.next = newCopyNode; 
+	        } else {
+	            copy.head = newCopyNode; 
+	        }
+	        prevCopyNode = newCopyNode; 
+	        origCurr = origCurr.next; 
+	    }
 
+	    return copy; 
+    }
+    
+    public void sortList(){
+        sortedList = new DayList();
+        DailyCustomerList current = home.daylist.head;
+        while(current!=null){
+            if(sortedList.head==null){
+                DailyCustomerList temp = new DailyCustomerList();
+                temp.date = current.date;
+                temp.dailyTotal = current.dailyTotal;
+                sortedList.head = sortedList.tail = temp ;                
+            }
+            else{
+                DailyCustomerList temp = sortedList.head;
+                DailyCustomerList lastLesserNode = sortedList.head;
+                while(temp!=null && temp.dailyTotal<=current.dailyTotal){
+                    lastLesserNode = temp ;
+                    temp = temp.next;
+                }
+                DailyCustomerList list = new DailyCustomerList();
+                list.dailyTotal = current.dailyTotal;
+                list.date = current.date;
+                if(temp == sortedList.head){
+                    temp.previous = list;
+                    list.next = temp ;
+                    sortedList.head = list;
+                }else{
+                    lastLesserNode.next = list ;
+                    list.previous = lastLesserNode;
+                    list.next = temp;
+                    if(temp!=null){
+                        temp.previous=list;
+                    }                    
+                }
+                if(lastLesserNode==sortedList.tail){
+                        sortedList.tail = list;
+                }
+            }
+            current = current.next;
+        }
+    }
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;

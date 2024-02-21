@@ -254,6 +254,7 @@ public class ReleaseSlotUI extends javax.swing.JFrame {
         String text = insertSlotField.getText();
         if (text.isEmpty()) {
             priceLabel.setText("0");
+            enterTimeLabel.setText("00:00:00");
         }
         else{
             try{
