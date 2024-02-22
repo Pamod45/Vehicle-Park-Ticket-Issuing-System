@@ -1,10 +1,15 @@
-
 package carparkmanagementsystem;
 
-public class CarPark {
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
 
+public class CarPark {
     public static void main(String[] args) {
-        // TODO code application logic here
+        FlatMacLightLaf.setup();     
+        UIDefaults defaults = UIManager.getLookAndFeelDefaults();
+        HomeUI home = new HomeUI();
+        home.setVisible(true);
     }
     
 }
