@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package carparkmanagementsystem;
 
 import carparkmanagementsystem.dataStructures.AVLTree;
@@ -46,6 +42,7 @@ public class HomeUI extends javax.swing.JFrame {
         IncomeStatusButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Home");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setForeground(new java.awt.Color(204, 204, 255));
@@ -174,17 +171,7 @@ public class HomeUI extends javax.swing.JFrame {
         customers.addCustomer("17:05:00", "18:20:00", 300);
         
         
-    }
-    public static void main(String args[]) {       
-        FlatMacLightLaf.setup();
-        UIDefaults defaults = UIManager.getLookAndFeelDefaults();
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HomeUI().setVisible(true);
-            }
-        });
-    }
-    
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton IncomeStatusButton;

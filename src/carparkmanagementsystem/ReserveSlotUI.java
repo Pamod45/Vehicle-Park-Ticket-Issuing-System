@@ -43,6 +43,7 @@ HomeUI home;
         PrintTicketButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Reserve Slot");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setForeground(new java.awt.Color(204, 204, 255));
@@ -99,7 +100,7 @@ HomeUI home;
 
         nextSlotLabel.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         nextSlotLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        nextSlotLabel.setText("08");
+        nextSlotLabel.setText("01");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel5.setText("in minimum distance");
@@ -109,7 +110,7 @@ HomeUI home;
 
         enterTimeLabel.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         enterTimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        enterTimeLabel.setText("09:30AM");
+        enterTimeLabel.setText("00:00:00");
 
         PrintTicketButton.setBackground(new java.awt.Color(102, 102, 255));
         PrintTicketButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
