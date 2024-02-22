@@ -13,7 +13,7 @@
 
 ## AUTHOR
 
-*[Pubudu Perea]( https://github.com/Pamod45)
+* [Pubudu Perea]( https://github.com/Pamod45)
 
 ##Contributors 🏅
 
@@ -23,4 +23,4 @@
 
 ## CONTACT
 
-* Pubudu Perera -> [pubu@gmail.com](mailto:pubupere32@gmail.com)
+* Pubudu Perera -> [pubupere32@gmail.com](mailto:pubupere32@gmail.com)
