@@ -39,8 +39,24 @@
 * AVL Tree
 * Doubly Linked List
 * Merge Sort Algorithm
+
+## User Interfaces of the Application
+
+<center>
+
+![Image 1](Images/HomeUI.png)
+
+![Image 2](Images/ReserveSlotUI.png)
+
+![Image 3](Images/ReleaseSlotUI.png)
+
+![Image 4](Images/IncomeStatusUI.png)
+
+![Image 5](Images/IncomeStatusUI2.png)
+
+</center>
   
-## AUTHOR
+## AUTHOR 🖋
 
 * [Pubudu Perea]( https://github.com/Pamod45)
 
@@ -50,6 +66,6 @@
 
 * [Nisal Wickramaarachchi]( https://github.com/Nisal200212)
 
-## CONTACT
+## CONTACT 📞
 
 * Pubudu Perera -> [pubupere32@gmail.com](mailto:pubupere32@gmail.com)
